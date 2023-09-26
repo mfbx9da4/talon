@@ -10,7 +10,7 @@ tag(): user.multiple_cursors
 
 # Panels
 panel solution: key(ctrl-alt-l)
-panel properties: key(f4)
+# panel properties: key(f4)
 panel output: key(ctrl-alt-o)
 panel class: key(ctrl-shift-c)
 panel errors: key(ctrl-\ ctrl-e)
