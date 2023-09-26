@@ -10,6 +10,7 @@ key(f2:repeat):
     key(brightness_up)
 
 key(f3): speech.toggle()
+# f4 depends on current mode (dictation or not)
 key(f5): # dictation?
 key(f6): # do not disturb?
 

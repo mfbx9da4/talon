@@ -74,3 +74,7 @@ spell that <user.formatters> <user.letters>:
 
 # Escape, type things that would otherwise be commands
 ^escape <user.text>$: user.dictation_insert(user.text)
+
+key(f4):
+    mode.disable("dictation")
+    mode.enable("command")
