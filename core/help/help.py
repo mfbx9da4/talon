@@ -119,10 +119,11 @@ def get_total_context_pages() -> int:
 
 
 def get_current_context_page_length() -> int:
-    start_index = (current_context_page - 1) * setting_help_max_contexts_per_page.get()
+    start_index = (current_context_page - 1) * \
+        setting_help_max_contexts_per_page.get()
     return len(
         sorted_display_list[
-            start_index : start_index + setting_help_max_contexts_per_page.get()
+            start_index: start_index + setting_help_max_contexts_per_page.get()
         ]
     )
 
@@ -257,7 +258,8 @@ def draw_context_commands(gui: imgui.GUI):
     context_title = format_context_title(selected_context)
     title = f"Context: {context_title}"
     commands = context_command_map[selected_context].items()
-    item_line_counts = [get_command_line_count(command) for command in commands]
+    item_line_counts = [get_command_line_count(
+        command) for command in commands]
     pages = get_pages(item_line_counts)
     total_page_count = max(pages, default=1)
     draw_commands_title(gui, title)
@@ -279,11 +281,13 @@ def draw_search_commands(gui: imgui.GUI):
 
     title = f"Search: {search_phrase}"
     commands_grouped = get_search_commands(search_phrase)
-    commands_flat = list(itertools.chain.from_iterable(commands_grouped.values()))
+    commands_flat = list(
+        itertools.chain.from_iterable(commands_grouped.values()))
 
     sorted_commands_grouped = sorted(
         commands_grouped.items(),
-        key=lambda item: context_map[item[0]] not in cached_active_contexts_list,
+        key=lambda item: context_map[item[0]
+                                     ] not in cached_active_contexts_list,
     )
 
     pages = get_pages(
@@ -438,7 +442,8 @@ def refresh_rule_word_map(context_command_map):
 
     for context_name, commands in context_command_map.items():
         for rule in commands:
-            tokens = {token for token in re.split(r"\W+", rule) if token.isalpha()}
+            tokens = {token for token in re.split(
+                r"\W+", rule) if token.isalpha()}
             for token in tokens:
                 rule_word_map[token].add((context_name, rule))
 
@@ -631,7 +636,8 @@ class Actions:
         global sorted_display_list, selected_context
         if gui_context_help.showing:
             if index < setting_help_max_contexts_per_page.get() and (
-                (current_context_page - 1) * setting_help_max_contexts_per_page.get()
+                (current_context_page - 1) *
+                setting_help_max_contexts_per_page.get()
                 + index
                 < len(sorted_display_list)
             ):

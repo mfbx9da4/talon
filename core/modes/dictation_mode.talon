@@ -78,3 +78,7 @@ spell that <user.formatters> <user.letters>:
 key(f4):
     mode.disable("dictation")
     mode.enable("command")
+
+
+settings():
+    speech.timeout = 1.0
